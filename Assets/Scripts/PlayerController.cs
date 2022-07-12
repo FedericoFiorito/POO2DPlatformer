@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Movement")]
     public float moveSpeed;
 
     [Header("Components")]
     public Rigidbody2D theRB;
+
+    [Header("Animator")]
+   // private Animator anim;
+    private SpriteRenderer theSR;
 
     [Header("Jump")]
     public float jumpForce;
@@ -20,10 +26,13 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheckpoint;
     public LayerMask whatIsGround;
 
+    public bool stopInput;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       // anim = GetComponent<Animator>();
+        theSR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,6 +63,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
+        if (theRB.velocity.x < 0)
+        {
+            theSR.flipX = true;
+        }
+        else if (theRB.velocity.x > 0)
+        {
+            theSR.flipX = false;
+        }
+
+       // anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
+       // anim.SetBool("isGrounded", isGrounded);
     }
 }

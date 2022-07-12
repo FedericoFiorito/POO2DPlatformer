@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Timer : MonoBehaviour
 {
     public float TotalTime;
     int minutes, seconds;
     public Text TimeText;
+
+    public static event Action PlayerDeath;
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class Timer : MonoBehaviour
             {
                 Debug.Log("perdiste");
                 Start = false;
+                PlayerDeath?.Invoke();
             }
             yield return null;
         }
