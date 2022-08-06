@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fed34b56d1a0742a0966e5c880495d, type: 3}
   m_Name: Silver
   m_EditorClassIdentifier: 
-  AddTime: 40
+  AddTime: 20

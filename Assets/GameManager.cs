@@ -7,9 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Victory;
     public GameObject Defeat;
+    public string NextLevel;
+
+    public IEnumerator ProximoNivel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(NextLevel);
+    }
     public void victoria()
     {
         Victory.SetActive(true);
+        StartCoroutine(ProximoNivel());
     }
 
     public IEnumerator derrota()
